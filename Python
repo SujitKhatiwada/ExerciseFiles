@@ -1,0 +1,71 @@
+# Problem Set , random_integer.py
+
+# Random Integer Creation
+# -----------------------
+
+def RandomIntList():
+    '''
+    parameter: none.
+
+    Starts up an interactive random integer list generation.
+
+    * At the start of the console, let the user know how many
+      integers the list should contain.
+
+    * The user should input number
+
+    * Before each round, the user is asked whether they want to continue or not.
+    '''
+    # Setup
+    import random
+
+    # Greeting
+    print('Random Integer List')
+    numb_of_integer = input('How many random integers should the list contain?: ')
+
+    num_list = random.sample(range(1, 100), int(numb_of_integer))
+    print('Random Integers')
+    print('===================')
+
+    # Integer list
+    print('Integers: ', __str__(num_list))
+
+    # Count of Integer
+    print('Count: ', numb_of_integer)
+
+    # Sum Calculation
+    sum_num = __cal_sum__(num_list)
+    print('Total: ', sum_num)
+
+    # Average Calculation
+    average = __cal_average__(sum_num, num_list)
+    print('Average: ', average)
+
+    generate_again = ''
+    while not generate_again in ['y', 'n']:
+        generate_again = input('Continue (y/n) Press y or n): ')
+    if generate_again == 'y':
+        print("")
+        RandomIntList()
+    else:
+        print('Bye!')
+
+
+def __str__(num_list):
+    string_list = [str(num) for num in num_list]
+    return ",".join(string_list)
+
+
+def __cal_sum__(num_list):
+    sum_num = 0
+    for num in num_list:
+        sum_num = sum_num + num
+    return sum_num
+
+
+def __cal_average__(sum_num, num_list):
+    avg = sum_num / len(num_list)
+    return round(avg, 3)  # Round off to 3 decimal at most
+
+
+RandomIntList()
